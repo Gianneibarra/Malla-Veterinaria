@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Malla Interactiva</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Malla Universitaria</h1>
+  <div class="materia" data-correlativa="ninguna">
+    <input type="checkbox" id="mat1">
+    <label for="mat1">Matemática I</label>
+  </div>
+  <div class="materia" data-correlativa="mat1">
+    <input type="checkbox" id="mat2" disabled>
+    <label for="mat2">Matemática II</label>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

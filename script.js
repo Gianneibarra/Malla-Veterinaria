@@ -1,55 +1,25 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fdf6f0;
-  text-align: center;
-  padding: 20px;
+document.querySelectorAll('.materia').forEach(materia => {
+  materia.addEventListener('click', () => {
+    if (materia.classList.contains('desbloqueada') || materia.dataset.correlativas === "") {
+      materia.classList.toggle('tachada');
+      desbloquearMaterias();
+    }
+  });
+});
+
+function desbloquearMaterias() {
+  document.querySelectorAll('.materia').forEach(materia => {
+    if (materia.dataset.correlativas) {
+      const previas = materia.dataset.correlativas.split(',');
+      const completadas = previas.every(id => 
+        document.querySelector(.materia[data-id="${id}"])?.classList.contains('tachada')
+      );
+      if (completadas) {
+        materia.classList.add('desbloqueada');
+      }
+    }
+  });
 }
 
-h1 {
-  color: #4a4a4a;
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
-
-h2 {
-  color: #7b5e57;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-  max-width: 1200px;
-  margin: auto;
-  margin-bottom: 30px;
-}
-
-.materia {
-  background-color: #fce1e4;
-  border: 2px solid #f9c6d2;
-  border-radius: 15px;
-  padding: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.95rem;
-}
-
-.materia:hover {
-  transform: scale(1.03);
-  background-color: #fcd2d7;
-}
-
-.materia.desbloqueada {
-  background-color: #d0f0c0;
-  border-color: #a4d3a2;
-  color: #333;
-}
-
-.materia.tachada {
-  text-decoration: line-through;
-  background-color: #ccc;
-  color: #888;
-}
+// Desbloquear las materias sin correlativas al inicio
+desbloquearMaterias();
